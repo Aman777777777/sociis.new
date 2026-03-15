@@ -1,0 +1,118 @@
+import { Link } from "react-router-dom";
+import sociisGroupLogo from "@/assets/sociisgroup-logo.png";
+
+const Footer = () => {
+  return (
+    <footer className="py-12 sm:py-20 border-t border-border">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-16">
+          {/* Brand */}
+          <div className="sm:col-span-2 md:col-span-1">
+            <Link to="/" className="flex items-center gap-3 mb-4 sm:mb-6">
+              <img src={sociisGroupLogo} alt="SociisGroup" className="h-8 sm:h-10 w-auto" />
+            </Link>
+            <p className="font-sans text-sm sm:text-base text-muted-foreground max-w-xs">
+              A sovereign independent behavioural institution turning sustainable behaviour into global Impact.
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="font-sans text-sm sm:text-base tracking-wide-brand text-foreground mb-4 sm:mb-6">
+              EXPLORE
+            </h4>
+            <ul className="space-y-2 sm:space-y-3">
+              <li>
+                <a href="/#impact" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Impact
+                </a>
+              </li>
+              <li>
+                <a href="/#experiences" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Experiences
+                </a>
+              </li>
+              <li>
+                <a href="/#house" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  House
+                </a>
+              </li>
+              <li>
+                <a href="/#culture" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Culture
+                </a>
+              </li>
+              <li>
+                <Link to="/governance" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Governance
+                </Link>
+              </li>
+              <li>
+                <Link to="/calendar" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Calendar
+                </Link>
+              </li>
+              <li>
+                <Link to="/charter" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Charter
+                </Link>
+              </li>
+              <li>
+                <a href="/#access" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Access
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="font-sans text-sm sm:text-base tracking-wide-brand text-foreground mb-4 sm:mb-6">
+              LEGAL
+            </h4>
+            <ul className="space-y-2 sm:space-y-3">
+              <li>
+                <Link to="/privacy-policy" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link to="/cookie-policy" className="font-sans text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors">
+                  Cookie Policy
+                </Link>
+              </li>
+            </ul>
+            <p className="font-sans text-sm text-muted-foreground mt-6 sm:mt-8">
+              Sociis are the people. SociisGroup is the governing institute.
+            </p>
+            <p className="font-sans text-sm text-muted-foreground mt-2">
+              SociisGroup™, Benefit Corporation.
+              Brussels, Belgium.
+            </p>
+          </div>
+        </div>
+
+        {/* Operations Statement */}
+        <div className="pt-8 pb-6 border-t border-border">
+          <p className="font-sans text-base text-muted-foreground max-w-3xl">
+            We operate on the Sustainable Behavioural Standard (SBS™), measurement (BEE™, the Behavioural Engine of Ethics), public learning (House™), culture, and sovereign alliances to embed accountable conduct into institutions and organisations.
+          </p>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-6 sm:pt-8 border-t border-border">
+          <p className="font-sans text-xs sm:text-sm text-muted-foreground">
+            © {new Date().getFullYear()} SociisGroup™. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

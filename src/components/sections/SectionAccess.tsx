@@ -1,0 +1,40 @@
+const SectionAccess = () => {
+  return (
+    <section id="access" className="py-20 sm:py-28">
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs sm:text-sm tracking-[0.3em] text-muted-foreground uppercase mb-3 sm:mb-4">
+            Institutional Entry
+          </p>
+          <h2 className="font-sans font-light text-3xl sm:text-4xl text-foreground tracking-tight mb-6">
+            Access
+          </h2>
+
+          <p className="text-body text-muted-foreground mb-8">
+            Access is for experiences, institutional collaboration and alignment conversations.
+          </p>
+
+          <p className="text-body text-muted-foreground mb-8">
+            SociisGroup engages with leaders and institutions whose conduct aligns with the standards it governs.
+          </p>
+
+          <p className="text-body text-muted-foreground mb-10">
+            Entry is selective. There are no forms. Human judgement is the filter.
+          </p>
+
+          <div className="border-t border-border pt-10">
+            <p className="text-body text-muted-foreground mb-4">Contact</p>
+            <a
+              href="mailto:info@sociisgroup.com"
+              className="font-sans text-body text-foreground hover:text-primary transition-colors break-all"
+            >
+              info@sociisgroup.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SectionAccess;
