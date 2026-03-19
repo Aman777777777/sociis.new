@@ -229,24 +229,24 @@ const teamMembers: TeamMember[] = [
 
 ];
 
-const TeamCard = ({ 
-  member, 
-  index, 
-  onClick 
-}: { 
-  member: TeamMember; 
-  index: number; 
+const TeamCard = ({
+  member,
+  index,
+  onClick
+}: {
+  member: TeamMember;
+  index: number;
   onClick?: () => void;
 }) => {
   const isClickable = (member.category === "executive" || member.category === "board") && member.bio;
-  
+
   return (
-    <div 
+    <div
       className={`group opacity-0 animate-[fade-in-up_0.6s_ease-out_forwards] ${isClickable ? 'cursor-pointer' : ''}`}
       style={{ animationDelay: `${index * 0.08}s` }}
       onClick={isClickable ? onClick : undefined}
     >
-      <div className="relative overflow-hidden mb-4 w-[140px] h-[140px] aspect-square bg-muted/30 rounded-xl">
+      <div className="relative overflow-hidden mb-4 w-full aspect-square max-w-[160px] bg-muted/30 rounded-xl">
         {member.image ? (
           <img
             src={member.image}
@@ -263,7 +263,7 @@ const TeamCard = ({
       <h3 className={`font-sans text-foreground text-sm font-medium mb-0.5 transition-colors duration-300 whitespace-pre-line ${isClickable ? 'group-hover:text-accent' : ''}`}>
         {member.name}
       </h3>
-      <p className="font-sans text-xs text-muted-foreground leading-relaxed max-w-[140px]">
+      <p className="font-sans text-xs text-muted-foreground leading-relaxed max-w-[160px]">
         {member.role}
       </p>
     </div>
@@ -272,145 +272,145 @@ const TeamCard = ({
 
 const Governance = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-  
+
   const executive = teamMembers.filter(m => m.category === "executive");
   const board = teamMembers.filter(m => m.category === "board");
   const council = teamMembers.filter(m => m.category === "council");
   const advisors = teamMembers.filter(m => m.category === "advisor");
-  
+
 
   return (
     <PageTransition>
       <Header />
       <main className="min-h-screen bg-background">
-      
-      {/* Bio Dialog */}
-      <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
-        <DialogContent className="max-w-lg bg-background border-border max-h-[85vh] overflow-y-auto">
-          {selectedMember && (
-            <>
-              <DialogHeader>
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                    <img
-                      src={selectedMember.image}
-                      alt={selectedMember.name}
-                      className="w-full h-full object-cover"
-                      style={{ objectPosition: selectedMember.imagePosition || "center" }}
-                    />
+
+        {/* Bio Dialog */}
+        <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
+          <DialogContent className="max-w-lg bg-background border-border max-h-[85vh] overflow-y-auto">
+            {selectedMember && (
+              <>
+                <DialogHeader>
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                      <img
+                        src={selectedMember.image}
+                        alt={selectedMember.name}
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: selectedMember.imagePosition || "center" }}
+                      />
+                    </div>
+                    <div>
+                      <DialogTitle className="font-sans text-lg font-medium text-foreground whitespace-pre-line">
+                        {selectedMember.name}
+                      </DialogTitle>
+                      <p className="font-sans text-xs text-muted-foreground mt-1 whitespace-pre-line">
+                        {selectedMember.role}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <DialogTitle className="font-sans text-lg font-medium text-foreground whitespace-pre-line">
-                      {selectedMember.name}
-                    </DialogTitle>
-                    <p className="font-sans text-xs text-muted-foreground mt-1 whitespace-pre-line">
-                      {selectedMember.role}
-                    </p>
-                  </div>
-                </div>
-              </DialogHeader>
-              <p className="font-sans text-base text-foreground leading-relaxed">
-                {selectedMember.bio}
-              </p>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-      
-      {/* Hero */}
-      <section className="pt-32 pb-16">
-        <div className="container mx-auto px-6 lg:px-8">
-          <h1 className="font-sans font-light text-3xl sm:text-4xl text-foreground tracking-tight mb-6">
-            Governance
-          </h1>
-          <div className="w-24 h-px bg-gradient-to-r from-accent to-transparent mb-8"></div>
-          <p className="text-body text-muted-foreground max-w-2xl">
-            SociisGroup is governed through a defined institutional structure. Authority, oversight and executive responsibility are intentionally separated to safeguard independence, integrity and long-term trust.
-          </p>
-        </div>
-      </section>
+                </DialogHeader>
+                <p className="font-sans text-base text-foreground leading-relaxed">
+                  {selectedMember.bio}
+                </p>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
 
-      {/* Board Section */}
-      <section className="py-12 border-t border-border/50">
-        <div className="container mx-auto px-6 lg:px-8">
-          <h2 className="font-sans text-sm tracking-widest text-foreground uppercase mb-2">
-            Board & Executive Leadership
-          </h2>
-          <p className="font-sans text-base text-muted-foreground mb-10">
-            The Board provides institutional oversight and strategic direction for SociisGroup™.
-          </p>
-
-          <p className="font-sans text-xs text-muted-foreground mb-6">
-            The strategic leadership of SociisGroup™.
-          </p>
-
-          <div className="flex flex-wrap gap-8 mb-12">
-            {executive.map((member, index) => (
-              <TeamCard 
-                key={member.name} 
-                member={member} 
-                index={index} 
-                onClick={() => setSelectedMember(member)}
-              />
-            ))}
+        {/* Hero */}
+        <section className="pt-32 pb-16">
+          <div className="container mx-auto px-6 lg:px-8">
+            <h1 className="font-sans font-light text-3xl sm:text-4xl text-foreground tracking-tight mb-6">
+              Governance
+            </h1>
+            <div className="w-24 h-px bg-gradient-to-r from-accent to-transparent mb-8"></div>
+            <p className="text-body text-muted-foreground max-w-2xl">
+              SociisGroup is governed through a defined institutional structure. Authority, oversight and executive responsibility are intentionally separated to safeguard independence, integrity and long-term trust.
+            </p>
           </div>
+        </section>
 
-          <h3 className="font-sans text-xs tracking-widest text-muted-foreground/50 uppercase mb-2">
-            Division Leadership
-          </h3>
-          <p className="font-sans text-xs text-muted-foreground/50 mb-6">
-            Leaders responsible for executing the strategic direction defined by the Board & Executive Leadership across SociisGroup's operational divisions.
-          </p>
-          <div className="flex flex-wrap gap-8">
-            {board.map((member, index) => (
-              <TeamCard 
-                key={member.name} 
-                member={member} 
-                index={index} 
-                onClick={() => setSelectedMember(member)}
-              />
-            ))}
+        {/* Board Section */}
+        <section className="py-12 border-t border-border/50">
+          <div className="container mx-auto px-6 lg:px-8">
+            <h2 className="font-sans text-sm tracking-widest text-foreground uppercase mb-2">
+              Board & Executive Leadership
+            </h2>
+            <p className="font-sans text-base text-muted-foreground mb-10">
+              The Board provides institutional oversight and strategic direction for SociisGroup™.
+            </p>
+
+            <p className="font-sans text-xs text-muted-foreground mb-6">
+              The strategic leadership of SociisGroup™.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
+              {executive.map((member, index) => (
+                <TeamCard
+                  key={member.name}
+                  member={member}
+                  index={index}
+                  onClick={() => setSelectedMember(member)}
+                />
+              ))}
+            </div>
+
+            <h3 className="font-sans text-xs tracking-widest text-muted-foreground/50 uppercase mb-2">
+              Division Leadership
+            </h3>
+            <p className="font-sans text-xs text-muted-foreground/50 mb-6">
+              Leaders responsible for executing the strategic direction defined by the Board & Executive Leadership across SociisGroup's operational divisions.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+              {board.map((member, index) => (
+                <TeamCard
+                  key={member.name}
+                  member={member}
+                  index={index}
+                  onClick={() => setSelectedMember(member)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Ethical Council */}
-      <section className="py-12 border-t border-border/50">
-        <div className="container mx-auto px-6 lg:px-8">
-          <h2 className="font-sans text-xs tracking-widest text-muted-foreground uppercase mb-2">
-            Ethical Council
-          </h2>
-          <p className="font-sans text-sm text-muted-foreground/70 mb-10">
-            The Council acts as guardian of ethical conduct, institutional integrity and long-term trust.
-          </p>
-          <div className="flex flex-wrap gap-8">
-            {council.map((member, index) => (
-              <TeamCard key={member.name} member={member} index={index} />
-            ))}
+        {/* Ethical Council */}
+        <section className="py-12 border-t border-border/50">
+          <div className="container mx-auto px-6 lg:px-8">
+            <h2 className="font-sans text-xs tracking-widest text-muted-foreground uppercase mb-2">
+              Ethical Council
+            </h2>
+            <p className="font-sans text-sm text-muted-foreground/70 mb-10">
+              The Council acts as guardian of ethical conduct, institutional integrity and long-term trust.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+              {council.map((member, index) => (
+                <TeamCard key={member.name} member={member} index={index} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Trusted Advisors */}
-      <section className="py-12 border-t border-border/50">
-        <div className="container mx-auto px-6 lg:px-8">
-          <h2 className="font-sans text-xs tracking-widest text-muted-foreground uppercase mb-2">
-            Trusted Advisors
-          </h2>
-          <p className="font-sans text-sm text-muted-foreground/70 mb-10">
-            Trusted Advisors provide independent, non-binding guidance across strategy, sustainability, systems and institutional development. They do not govern the institution.
-          </p>
-          <div className="flex flex-wrap gap-8">
-            {advisors.map((member, index) => (
-              <TeamCard key={member.name} member={member} index={index} />
-            ))}
+        {/* Trusted Advisors */}
+        <section className="py-12 border-t border-border/50">
+          <div className="container mx-auto px-6 lg:px-8">
+            <h2 className="font-sans text-xs tracking-widest text-muted-foreground uppercase mb-2">
+              Trusted Advisors
+            </h2>
+            <p className="font-sans text-sm text-muted-foreground/70 mb-10">
+              Trusted Advisors provide independent, non-binding guidance across strategy, sustainability, systems and institutional development. They do not govern the institution.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+              {advisors.map((member, index) => (
+                <TeamCard key={member.name} member={member} index={index} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
 
 
-      <Footer />
+        <Footer />
       </main>
     </PageTransition>
   );
