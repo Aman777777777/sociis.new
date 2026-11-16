@@ -14,6 +14,7 @@ const STYLES = [
   "/product-layout.css",
   "/refinements.css",
   "/legal.css",
+  "/layout-fixes.css",
 ];
 
 export const Route = createFileRoute("/")({

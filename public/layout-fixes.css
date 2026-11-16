@@ -1,0 +1,117 @@
+/* Shared layout safeguards. Loaded after the legacy section styles. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main,
+section,
+.wrap,
+.hero-copy,
+.business-heading > *,
+.revenue-grid > *,
+.route-grid > * {
+  min-width: 0;
+}
+
+p,
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 761px) {
+  .hero-copy {
+    width: 62%;
+    max-width: 1000px;
+    margin-left: 7%;
+  }
+}
+
+@media (min-width: 761px) and (max-height: 920px) {
+  .hero h1 {
+    font-size: clamp(56px, 5vw, 88px);
+    line-height: 1;
+  }
+
+  .hero-description {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+
+  .hero-route {
+    margin-top: 7px;
+    font-size: 11px;
+  }
+
+  .hero-actions {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 761px) {
+  .market-line {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 22px;
+  }
+
+  .market-line > span:last-child {
+    grid-column: 1 / -1;
+    max-width: 560px;
+  }
+
+  .revenue-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .revenue-grid article,
+  .revenue-grid article + article {
+    padding: 24px 0;
+    border: 0;
+  }
+
+  .revenue-grid article + article {
+    border-top: 1px solid var(--line);
+  }
+
+  .revenue-grid h3 {
+    margin: 14px 0;
+  }
+
+  .revenue-grid p {
+    max-width: 560px;
+  }
+
+  .demand-path {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .demand-path li:nth-child(3) {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .demand-path li:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    height: auto;
+    min-height: max(750px, 100svh);
+  }
+
+  .hero-copy {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+}
